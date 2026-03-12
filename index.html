@@ -8,94 +8,88 @@
     <style>
         .tab-active { border-bottom: 4px solid #e11d48; color: #e11d48; font-weight: 900; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 4px; }
     </style>
 </head>
-<body class="bg-gray-50 pb-28 font-sans">
+<body class="bg-gray-100 pb-28 font-sans">
 
     <header class="bg-white sticky top-0 z-50 shadow-md">
         <div class="p-4 text-center border-b">
-            <h1 id="shop-name" class="text-xl font-black text-gray-900 italic">MIO PIZZA VINCENDO</h1>
+            <h1 id="shop-name" class="text-xl font-black text-gray-900 italic uppercase">Mio Pizza Vincendo</h1>
         </div>
-        
-        <div class="bg-green-600 p-3 text-white text-center shadow-inner">
-            <p class="text-[10px] uppercase tracking-widest font-bold opacity-80">Offre Exceptionnelle</p>
-            <p class="text-sm font-black">🍕 2 PIZZAS ACHETÉES = 1 OFFERTE *</p>
-            <p class="text-[9px] italic">*Sur tailles identiques (Valeur Margarita)</p>
+        <div class="bg-green-600 p-2 text-white text-center">
+            <p class="text-[10px] font-bold uppercase tracking-widest">Offre Spéciale</p>
+            <p class="text-xs font-black italic">2 PIZZAS ACHETÉES = 1 OFFERTE *</p>
         </div>
-
         <nav id="cat-nav" class="flex overflow-x-auto p-3 space-x-6 bg-white border-b hide-scrollbar"></nav>
     </header>
 
-    <main id="menu-container" class="p-4 space-y-4 max-w-md mx-auto min-h-[300px]"></main>
+    <main id="menu-container" class="p-4 space-y-4 max-w-md mx-auto"></main>
 
-    <section class="p-4 max-w-md mx-auto mb-10">
-        <h2 class="text-xs font-bold text-gray-400 uppercase mb-3">Suppléments & Pâte</h2>
-        <div id="extras-container" class="bg-white rounded-2xl p-4 shadow-sm divide-y"></div>
-    </section>
-
-    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t z-50">
-        <a id="call-btn" href="tel:0693645964" class="bg-[#e11d48] text-white w-full py-4 rounded-2xl font-black flex items-center justify-center gap-3 shadow-xl active:scale-95 transition-all uppercase text-sm">
-            📞 Commander : 0693 64 59 64
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/95 border-t z-50 shadow-2xl">
+        <a id="call-btn" href="tel:0693645964" class="bg-[#e11d48] text-white w-full py-4 rounded-xl font-black flex items-center justify-center gap-3 shadow-lg active:scale-95 transition-all text-sm">
+            📞 COMMANDER : 0693 64 59 64
         </a>
     </div>
 
     <script>
-        let db = { produits: [], categories: [], extras: [] };
+        let db = {};
 
-        // Chargement sécurisé
         fetch('menu.json?v=' + Date.now())
             .then(r => r.json())
             .then(data => {
                 db = data;
                 document.getElementById('shop-name').innerText = data.config.nom_boutique;
-                
                 const nav = document.getElementById('cat-nav');
                 data.categories.forEach((c, i) => {
                     const b = document.createElement('button');
                     b.id = 'btn-' + c.id;
-                    b.className = "whitespace-nowrap pb-1 text-xs text-gray-400 uppercase font-bold transition-all";
+                    b.className = "whitespace-nowrap pb-1 text-xs text-gray-400 uppercase font-bold";
                     b.innerHTML = c.emoji + " " + c.nom;
                     b.onclick = () => show(c.id);
                     nav.appendChild(b);
                     if(i === 0) show(c.id);
                 });
-
-                const exC = document.getElementById('extras-container');
-                data.extras.forEach(e => {
-                    exC.innerHTML += `<div class="flex justify-between py-2 text-sm"><span class="text-gray-700">${e.nom}</span><span class="font-bold text-green-600">${e.prix}</span></div>`;
-                });
-            })
-            .catch(err => console.error("Erreur chargement JSON:", err));
+            });
 
         function show(catId) {
-            // Update Tabs
             db.categories.forEach(c => {
                 const el = document.getElementById('btn-' + c.id);
                 if(el) el.className = (c.id === catId) ? "whitespace-nowrap pb-1 text-xs tab-active uppercase" : "whitespace-nowrap pb-1 text-xs text-gray-400 uppercase font-bold";
             });
 
-            // Update List
             const container = document.getElementById('menu-container');
             container.innerHTML = '';
             
-            const filtered = db.produits.filter(p => p.categorie === catId);
-            
-            if(filtered.length === 0) {
-                container.innerHTML = `<div class="text-center py-10 text-gray-400 text-sm">Aucune pizza trouvée dans cette catégorie.<br>(Vérifiez le fichier menu.json)</div>`;
-            } else {
-                filtered.forEach(p => {
-                    container.innerHTML += `
-                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 transition-all active:bg-gray-50">
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-bold text-gray-800 uppercase text-sm">${p.nom}</h3>
-                                    <span class="text-[#e11d48] font-black text-sm">${p.prix}</span>
-                                </div>
-                                <p class="text-gray-500 text-[10px] leading-relaxed italic">${p.description}</p>
+            db.produits.filter(p => p.categorie === catId).forEach(p => {
+                container.innerHTML += `
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-gray-900 uppercase text-sm">${p.nom}</h3>
+                        </div>
+                        <p class="text-gray-500 text-[10px] leading-relaxed mb-4 italic">${p.description}</p>
+                        
+                        <div class="price-grid">
+                            <div class="bg-gray-50 p-1 rounded">
+                                <span class="block text-[8px] text-gray-400 uppercase">Mini</span>
+                                <span class="text-[11px] font-bold text-red-600">${p.prix.min}€</span>
                             </div>
-                        </div>`;
-                });
-            }
+                            <div class="bg-gray-50 p-1 rounded">
+                                <span class="block text-[8px] text-gray-400 uppercase">Petit</span>
+                                <span class="text-[11px] font-bold text-red-600">${p.prix.p}€</span>
+                            </div>
+                            <div class="bg-gray-50 p-1 rounded">
+                                <span class="block text-[8px] text-gray-400 uppercase">Moyen</span>
+                                <span class="text-[11px] font-bold text-red-600">${p.prix.m}€</span>
+                            </div>
+                            <div class="bg-gray-50 p-1 rounded">
+                                <span class="block text-[8px] text-gray-400 uppercase">Grand</span>
+                                <span class="text-[11px] font-bold text-red-600">${p.prix.g}€</span>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
