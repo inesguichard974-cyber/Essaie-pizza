@@ -1,0 +1,53 @@
+{
+  "config": {
+    "nom_boutique": "Mio Pizza Vincendo",
+    "logo_url": "https://img.freepik.com/vecteurs-libre/logo-pizza-isole-blanc_24908-78339.jpg",
+    "couleur_primaire": "#e11d48",
+    "couleur_secondaire": "#16a34a",
+    "couleur_fond": "#ffffff",
+    "telephone": "0693645964",
+    "instagram_username": ""
+  },
+  "categories": [
+    {"id": "trad", "nom": "Traditionnelles", "emoji": "🍕"},
+    {"id": "creole", "nom": "Coin Créole", "emoji": "🇷🇪"},
+    {"id": "special", "nom": "Spécialités", "emoji": "⭐"},
+    {"id": "fromage", "nom": "Fromages", "emoji": "🧀"},
+    {"id": "boisson", "nom": "Boissons", "emoji": "🥤"}
+  ],
+  "produits": [
+    {
+      "nom": "Marguarita",
+      "prix": "5.00€",
+      "categorie": "trad",
+      "description": "Tomate, Olives, Fromage. (Prix pour taille P). Existe en Mini, M, G.",
+      "image": "https://images.unsplash.com/photo-1574071318508-1cdbad80ad38?q=80&w=200&auto=format&fit=crop"
+    },
+    {
+      "nom": "La Réunionnaise",
+      "prix": "8.50€",
+      "categorie": "creole",
+      "description": "Tomate, Bouchons au poulet, Olives, Fromage. (Taille P).",
+      "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=200&auto=format&fit=crop"
+    },
+    {
+      "nom": "Tartiflette",
+      "prix": "12.00€",
+      "categorie": "special",
+      "description": "Crème fraîche, Lardons, Pommes de terre, Oignons, Fromage.",
+      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=200&auto=format&fit=crop"
+    },
+    {
+      "nom": "Dodo / Heineken",
+      "prix": "2.00€",
+      "categorie": "boisson",
+      "description": "Bière locale 33cl (Dodo) ou Heineken.",
+      "image": "https://images.unsplash.com/photo-1535958636474-b021ee887b13?q=80&w=200&auto=format&fit=crop"
+    }
+  ],
+  "extras": [
+    { "nom": "Supplément Viande", "prix": "+1.50€", "categorie": "tous" },
+    { "nom": "Supplément Fromage", "prix": "+1.00€", "categorie": "tous" },
+    { "nom": "Pâte épaisse (Pan Pizza)", "prix": "+1.50€", "categorie": "tous" }
+  ]
+}
