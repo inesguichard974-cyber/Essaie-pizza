@@ -1,47 +1,29 @@
 {
   "config": {
-    "nom_boutique": "Mio Pizza Vincendo",
+    "nom_boutique": "MIO PIZZA VINCENDO",
     "telephone": "0693645964",
-    "couleur_fond": "#ffffff",
-    "offre_speciale": "🎁 2 PIZZAS ACHETÉES = 1 OFFERTE !"
+    "offre_speciale": "🍕 2 PIZZAS ACHETÉES = 1 OFFERTE !"
   },
   "categories": [
     {"id": "trad", "nom": "Traditionnelles", "emoji": "🍅"},
     {"id": "creole", "nom": "Coin Créole", "emoji": "🇷🇪"},
-    {"id": "prononce", "nom": "Goûts Prononcés", "emoji": "🔥"},
-    {"id": "vegetale", "nom": "Légumes & Paysannes", "emoji": "🌿"},
-    {"id": "fromage", "nom": "Les Fromages", "emoji": "🧀"},
-    {"id": "creme", "nom": "Base Crème", "emoji": "🥛"},
+    {"id": "special", "nom": "Spécialités", "emoji": "⭐"},
+    {"id": "fromage", "nom": "Fromages", "emoji": "🧀"},
     {"id": "boisson", "nom": "Boissons", "emoji": "🥤"}
   ],
   "produits": [
     { "nom": "Marguarita", "prix": "5.00€", "categorie": "trad", "description": "Tomate, Olives, Fromage. (Taille P)" },
-    { "nom": "Bambino", "prix": "7.00€", "categorie": "trad", "description": "Tomate, Épaule ou Poulet ou Fromage." },
+    { "nom": "Bambino", "prix": "7.00€", "categorie": "trad", "description": "Tomate, Épaule ou Poulet, Fromage." },
     { "nom": "Royale", "prix": "9.00€", "categorie": "trad", "description": "Tomate, Épaule, Champignons, Olives, Fromage." },
     { "nom": "Reine", "prix": "9.50€", "categorie": "trad", "description": "Tomate, Épaule, Champignons, Œuf, Olives, Fromage." },
-    
     { "nom": "Créole", "prix": "10.50€", "categorie": "creole", "description": "Tomate, Saucisses fumées, Oignons, Gros piments, Fromage." },
     { "nom": "La Réunionnaise", "prix": "8.50€", "categorie": "creole", "description": "Tomate, Bouchons au poulet, Olives, Fromage." },
-    { "nom": "L'Indienne", "prix": "10.00€", "categorie": "creole", "description": "Crème Fraîche au Curry, Poulet ou Épaule ou Lardon, Fromage." },
-    
-    { "nom": "Campagnarde", "prix": "11.00€", "categorie": "prononce", "description": "Tomate, Bœuf ou Poulet ou Lardons, Oignons, Poivrons, Champignons, Persillade." },
-    { "nom": "Fournaise", "prix": "11.50€", "categorie": "prononce", "description": "Tomate, Merguez, Oignons, Poivrons, Chorizo, Champignons, Fromage." },
-    
-    { "nom": "Végétarienne", "prix": "11.50€", "categorie": "vegetale", "description": "Tomate, Cœurs d'artichaut, Courgettes, Aubergines, Oignons, Fromage." },
-    { "nom": "Hawaïenne", "prix": "11.00€", "categorie": "vegetale", "description": "Tomate, Poulet ou Épaule, Ananas, Crème Fraîche, Fromage." },
-    
-    { "nom": "Les 4 Fromages", "prix": "11.00€", "categorie": "fromage", "description": "Tomate, Mozzarella, Roquefort, Emmental, Parmesan, Olives." },
-    { "nom": "Takamaka", "prix": "11.50€", "categorie": "fromage", "description": "Tomate ou Crème Fraîche, Fromage de chèvre, Miel, Olives." },
-    
-    { "nom": "Tartiflette", "prix": "12.00€", "categorie": "creme", "description": "Crème Fraîche, Lardons, Pommes de terre, Oignons, Fromage." },
-    { "nom": "Montagnarde", "prix": "12.00€", "categorie": "creme", "description": "Crème Fraîche, Poulet ou Bœuf, Raclette, Pommes de terre, Fromage." },
-    
-    { "nom": "Dodo / Heineken", "prix": "2.00€", "categorie": "boisson", "description": "Bière 33cl au choix." },
-    { "nom": "Coca / Oasis / Fanta", "prix": "2.50€", "categorie": "boisson", "description": "Soda 50cl au choix." }
+    { "nom": "Tartiflette", "prix": "12.00€", "categorie": "special", "description": "Crème Fraîche, Lardons, Pommes de terre, Oignons, Fromage." },
+    { "nom": "Les 4 Fromages", "prix": "11.00€", "categorie": "fromage", "description": "Tomate, Mozzarella, Roquefort, Emmental, Parmesan." },
+    { "nom": "Dodo / Heineken", "prix": "2.00€", "categorie": "boisson", "description": "Bière 33cl." }
   ],
   "extras": [
     { "nom": "Supplément Viande / Fromage", "prix": "+1.50€" },
-    { "nom": "Pâte épaisse (Pan Pizza)", "prix": "+1.50€" },
-    { "nom": "Sauces : Pili-pili, Basilic, Citron", "prix": "Offert" }
+    { "nom": "Pâte épaisse (Pan Pizza)", "prix": "+1.50€" }
   ]
 }
