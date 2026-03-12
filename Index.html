@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Mio Pizza - Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --main-red: #e11d48; --main-green: #16a34a; }
+        .tab-active { border-bottom: 4px solid var(--main-red); color: var(--main-red); font-weight: bold; }
+        .card-enter { animation: slideIn 0.3s ease-out forwards; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body id="body-bg" class="bg-gray-50 font-sans pb-24">
+
+    <header class="bg-white shadow-md p-4 text-center sticky top-0 z-20">
+        <h1 id="shop-name" class="text-xl font-black text-gray-800 uppercase tracking-tighter">MIO PIZZA</h1>
+        <div class="bg-green-600 text-white text-[10px] font-bold py-1 px-3 rounded-full inline-block mt-1 animate-pulse">
+            🚚 LIVRAISON GRATUITE (18h30 - 22h)
+        </div>
+    </header>
+
+    <nav id="cat-nav" class="flex overflow-x-auto space-x-4 p-4 bg-white border-b hide-scrollbar sticky top-[72px] z-10">
+        </nav>
+
+    <main id="menu-container" class="p-4 grid grid-cols-1 gap-4 max-w-lg mx-auto"></main>
+
+    <section id="section-extras" class="p-4 max-w-lg mx-auto mb-10">
+        <h2 class="font-bold text-gray-700 mb-3 uppercase text-sm">Suppléments & Pâte</h2>
+        <div id="extras-container" class="bg-white rounded-xl p-3 shadow-sm divide-y"></div>
+    </section>
+
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-md border-t flex justify-center">
+        <a id="call-btn" href="tel:" class="bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center gap-2 transform active:scale-95 transition-all">
+            📞 COMMANDER PAR TÉLÉPHONE
+        </a>
+    </div>
+
+    <script>
+        let dataStore = {};
+
+        fetch('menu.json?v=' + Date.now())
+            .then(res => res.json())
+            .then(data => {
+                dataStore = data;
+                document.getElementById('shop-name').innerText = data.config.nom_boutique;
+                document.getElementById('call-btn').href = "tel:" + data.config.telephone;
+                
+                // Générer les onglets
+                const nav = document.getElementById('cat-nav');
+                data.categories.forEach((cat, index) => {
+                    const btn = document.createElement('button');
+                    btn.id = `btn-${cat.id}`;
+                    btn.className = "whitespace-nowrap pb-2 text-sm text-gray-500 transition-all";
+                    btn.innerHTML = `${cat.emoji} ${cat.nom}`;
+                    btn.onclick = () => filter(cat.id);
+                    nav.appendChild(btn);
+                    if(index === 0) filter(cat.id);
+                });
+
+                // Suppléments (toujours visibles)
+                const exContainer = document.getElementById('extras-container');
+                data.extras.forEach(ex => {
+                    exContainer.innerHTML += `<div class="flex justify-between py-2 text-sm"><span>${ex.nom}</span><span class="font-bold text-green-700">${ex.prix}</span></div>`;
+                });
+            });
+
+        function filter(catId) {
+            // UI Tabs
+            dataStore.categories.forEach(c => {
+                document.getElementById(`btn-${c.id}`).className = (c.id === catId) ? "whitespace-nowrap pb-2 text-sm tab-active" : "whitespace-nowrap pb-2 text-sm text-gray-500";
+            });
+
+            // Produits
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+            dataStore.produits.filter(p => p.categorie === catId).forEach(p => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 flex p-3 card-enter">
+                        <img src="${p.image}" class="w-20 h-20 object-cover rounded-lg">
+                        <div class="ml-4 flex-1">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-bold text-gray-800 text-sm leading-tight">${p.nom}</h3>
+                                <span class="text-red-600 font-black text-sm">${p.prix}</span>
+                            </div>
+                            <p class="text-gray-500 text-[11px] mt-1 leading-snug">${p.description}</p>
+                        </div>
+                    </div>`;
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
