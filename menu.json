@@ -7,23 +7,43 @@
   "categories": [
     {"id": "trad", "nom": "Traditionnelles", "emoji": "🍅"},
     {"id": "creole", "nom": "Coin Créole", "emoji": "🇷🇪"},
-    {"id": "special", "nom": "Spécialités", "emoji": "⭐"},
-    {"id": "fromage", "nom": "Fromages", "emoji": "🧀"},
-    {"id": "boisson", "nom": "Boissons", "emoji": "🥤"}
+    {"id": "prononce", "nom": "Goûts Prononcés", "emoji": "🔥"},
+    {"id": "legumes", "nom": "Les Légumes", "emoji": "🌿"},
+    {"id": "poissons", "nom": "Les Poissons", "emoji": "🐟"},
+    {"id": "fromages", "nom": "Les Fromages", "emoji": "🧀"},
+    {"id": "creme", "nom": "Spécialités Crème", "emoji": "🥛"}
   ],
   "produits": [
-    { "nom": "Marguarita", "prix": "5.00€", "categorie": "trad", "description": "Tomate, Olives, Fromage. (Taille P)" },
-    { "nom": "Bambino", "prix": "7.00€", "categorie": "trad", "description": "Tomate, Épaule ou Poulet, Fromage." },
-    { "nom": "Royale", "prix": "9.00€", "categorie": "trad", "description": "Tomate, Épaule, Champignons, Olives, Fromage." },
-    { "nom": "Reine", "prix": "9.50€", "categorie": "trad", "description": "Tomate, Épaule, Champignons, Œuf, Olives, Fromage." },
-    { "nom": "Créole", "prix": "10.50€", "categorie": "creole", "description": "Tomate, Saucisses fumées, Oignons, Gros piments, Fromage." },
-    { "nom": "La Réunionnaise", "prix": "8.50€", "categorie": "creole", "description": "Tomate, Bouchons au poulet, Olives, Fromage." },
-    { "nom": "Tartiflette", "prix": "12.00€", "categorie": "special", "description": "Crème Fraîche, Lardons, Pommes de terre, Oignons, Fromage." },
-    { "nom": "Les 4 Fromages", "prix": "11.00€", "categorie": "fromage", "description": "Tomate, Mozzarella, Roquefort, Emmental, Parmesan." },
-    { "nom": "Dodo / Heineken", "prix": "2.00€", "categorie": "boisson", "description": "Bière 33cl." }
+    { "nom": "Margharita", "categorie": "trad", "prix": ["3.50", "5.00", "7.00", "9.00"], "desc": "Tomate, Olives, Fromage." },
+    { "nom": "Bambino", "categorie": "trad", "prix": ["5.00", "7.00", "-", "-"], "desc": "Tomate, Épaule ou Poulet, Fromage." },
+    { "nom": "Florentine", "categorie": "trad", "prix": ["5.00", "8.00", "11.50", "13.00"], "desc": "Tomate, Épaule ou Poulet ou Bœuf..." },
+    { "nom": "Royale", "categorie": "trad", "prix": ["5.50", "9.00", "12.00", "14.50"], "desc": "Tomate, Épaule, Champignons, Olives, Fromage." },
+    { "nom": "Reine", "categorie": "trad", "prix": ["6.00", "9.50", "12.50", "15.00"], "desc": "Tomate, Épaule, Champignons, Œuf, Fromage." },
+    { "nom": "La Calzone Mio", "categorie": "trad", "prix": ["6.00", "9.50", "12.50", "15.00"], "desc": "En chausson : Tomate, Épaule ou Poulet..." },
+
+    { "nom": "Créole", "categorie": "creole", "prix": ["6.50", "10.50", "14.50", "17.00"], "desc": "Tomate, Saucisses fumées, Oignons, Gros piments." },
+    { "nom": "La Réunionnaise", "categorie": "creole", "prix": ["5.00", "8.50", "11.50", "14.00"], "desc": "Tomate, Bouchons au poulet, Olives, Fromage." },
+    { "nom": "L'Indienne", "categorie": "creole", "prix": ["5.50", "10.00", "13.50", "16.50"], "desc": "Crème au Curry, Poulet ou Épaule, Fromage." },
+
+    { "nom": "Campagnarde", "categorie": "prononce", "prix": ["7.00", "11.00", "14.50", "17.50"], "desc": "Tomate, Viande au choix, Oignons, Poivrons..." },
+    { "nom": "Fournaise", "categorie": "prononce", "prix": ["7.50", "11.50", "15.00", "17.50"], "desc": "Tomate, Chorizo, Champignons, Merguez..." },
+    { "nom": "Hawaïenne", "categorie": "prononce", "prix": ["7.00", "11.00", "14.50", "17.50"], "desc": "Tomate, Poulet, Ananas, Crème, Fromage." },
+
+    { "nom": "Végétarienne", "categorie": "legumes", "prix": ["7.50", "11.50", "15.00", "17.00"], "desc": "Tomate, Cœurs d'artichaut, Courgettes, Aubergines..." },
+    { "nom": "4 Saisons", "categorie": "legumes", "prix": ["7.50", "11.50", "15.00", "17.50"], "desc": "Tomate, Légumes de saison, Olives, Fromage." },
+
+    { "nom": "Norvégienne", "categorie": "poissons", "prix": ["7.00", "11.00", "14.50", "17.50"], "desc": "Tomate, Saumon, Crème Fraîche, Citron." },
+    { "nom": "Pêcheur", "categorie": "poissons", "prix": ["7.00", "11.00", "14.50", "17.50"], "desc": "Tomate, Fruits de mer, Crème, Persillade." },
+
+    { "nom": "La 4 Fromages", "categorie": "fromages", "prix": ["7.00", "11.00", "14.50", "17.00"], "desc": "Tomate, Mozzarella, Roquefort, Emmental, Parmesan." },
+    { "nom": "Takamaka", "categorie": "fromages", "prix": ["7.50", "11.50", "15.00", "17.50"], "desc": "Tomate ou Crème, Fromage de Chèvre, Miel." },
+
+    { "nom": "Tartiflette", "categorie": "creme", "prix": ["7.50", "12.00", "15.50", "18.00"], "desc": "Crème, Lardons, P. de terre, Reblochon, Oignons." },
+    { "nom": "Gersoise", "categorie": "creme", "prix": ["8.00", "12.50", "16.50", "19.00"], "desc": "Crème, Magret de canard, Champignons, Fromage." }
   ],
   "extras": [
-    { "nom": "Supplément Viande / Fromage", "prix": "+1.50€" },
-    { "nom": "Pâte épaisse (Pan Pizza)", "prix": "+1.50€" }
+    { "nom": "Ingrédients Classiques / Pan Pizza", "prix": ["1.00", "1.50", "2.00", "3.00"] },
+    { "nom": "Magret de Canard", "prix": ["1.00", "2.00", "3.00", "4.00"] },
+    { "nom": "Persillade, Basilic, Piment, Œuf", "prix": "0.50€ fixe" }
   ]
 }
