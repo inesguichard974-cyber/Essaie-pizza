@@ -15,17 +15,22 @@
     <header class="bg-white sticky top-0 z-50 shadow-md">
         <div class="p-4 text-center border-b">
             <h1 id="shop-name" class="text-xl font-black italic tracking-tighter">MIO PIZZA VINCENDO</h1>
+            <p id="accroche" class="text-[10px] text-gray-500 font-medium uppercase tracking-wide mt-1"></p>
         </div>
         
-        <div class="bg-green-600 p-2 text-white text-center">
-            <p class="text-[10px] uppercase font-bold tracking-widest opacity-80 leading-none">Offre 7j/7</p>
+        <div class="bg-green-600 p-2 text-white text-center shadow-inner">
             <p class="text-sm font-black italic">2 PIZZAS ACHETÉES = 1 OFFERTE *</p>
+        </div>
+
+        <div class="bg-gray-800 text-white flex justify-around p-2 text-[9px] font-bold uppercase tracking-tight">
+            <div id="horaires" class="flex items-center gap-1">🕒 <span></span></div>
+            <div id="zone" class="flex items-center gap-1">📍 <span></span></div>
         </div>
 
         <nav id="cat-nav" class="flex overflow-x-auto p-3 space-x-6 bg-white border-b hide-scrollbar"></nav>
     </header>
 
-    <main id="menu-container" class="p-4 space-y-5 max-w-md mx-auto min-h-[400px]"></main>
+    <main id="menu-container" class="p-4 space-y-6 max-w-md mx-auto min-h-[400px]"></main>
 
     <section class="p-4 max-w-md mx-auto">
         <h2 class="text-xs font-bold text-gray-400 uppercase mb-3 text-center tracking-widest">Extras & Suppléments</h2>
@@ -34,12 +39,12 @@
 
     <footer class="p-6 text-center text-gray-400 text-[10px] italic leading-tight max-w-md mx-auto">
         * Offre valable sur les pizzas de même taille. La pizza offerte est une Margharita de taille équivalente. 
-        Sauf pour la livraison d'une pizza (pas de boisson offerte). Livraison gratuite dès 18h30.
+        Livraison gratuite dès 18h30. Zone : St-Philippe à Leclerc St-Joseph.
     </footer>
 
     <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/95 border-t z-50 shadow-2xl">
         <a id="call-btn" href="tel:0693645964" class="bg-[#e11d48] text-white w-full py-4 rounded-2xl font-black flex items-center justify-center gap-3 shadow-lg active:scale-95 transition-all uppercase text-sm">
-            📞 APPELER : 0693 64 59 64
+            📞 COMMANDER : 0693 64 59 64
         </a>
     </div>
 
@@ -50,7 +55,11 @@
             .then(r => r.json())
             .then(data => {
                 db = data;
-                document.getElementById('shop-name').innerText = data.config.nom_boutique;
+                const cfg = data.config;
+                document.getElementById('shop-name').innerText = cfg.nom_boutique;
+                document.getElementById('accroche').innerText = cfg.accroche;
+                document.querySelector('#horaires span').innerText = cfg.horaires;
+                document.querySelector('#zone span').innerText = cfg.zone;
                 
                 const nav = document.getElementById('cat-nav');
                 data.categories.forEach((c, i) => {
@@ -91,12 +100,12 @@
                 container.innerHTML += `
                     <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
                         <h3 class="font-black text-gray-800 uppercase text-[14px] mb-1.5 tracking-tight">${p.nom}</h3>
-                        <p class="text-gray-500 text-[11px] mb-4 italic leading-relaxed font-medium">${p.description}</p>
+                        <p class="text-gray-500 text-[11.5px] mb-5 italic leading-relaxed font-medium">${p.description}</p>
                         <div class="grid grid-cols-4 gap-2.5">
                             ${p.prix.map((v, i) => `
                                 <div class="text-center bg-gray-50 p-1.5 rounded-lg border ${v === '-' ? 'opacity-20' : 'border-gray-100'}">
                                     <span class="block text-[10px] text-gray-400 uppercase font-extrabold mb-0.5">${['Mini','P','M','G'][i]}</span>
-                                    <span class="text-[12px] font-black ${v === '-' ? 'text-gray-300' : 'text-red-600'}">${v}${v !== '-' ? '€' : ''}</span>
+                                    <span class="text-[12.5px] font-black ${v === '-' ? 'text-gray-300' : 'text-red-600'}">${v}${v !== '-' ? '€' : ''}</span>
                                 </div>
                             `).join('')}
                         </div>
